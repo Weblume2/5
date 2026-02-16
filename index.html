@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Cafe UK | Best Breakfast & Coffee in London N13</title>
+    <meta name="description" content="London's favourite local café inside Forest House Hotel. Rated 4.8 stars. Serving the best English Breakfast, homemade lasagne, and artisan coffee. Family-run since 2009.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#F5EFE6',
+                        warmBrown: '#6F4E37',
+                        deepGreen: '#2F4F4F',
+                        softGold: '#D4AF37',
+                        offWhite: '#FAFAFA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(47, 79, 79, 0.8), rgba(111, 78, 55, 0.7)), url('https://images.unsplash.com/photo-1544025162-d76690b680fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Styles for nuances Tailwind doesn't cover by default */
+        .glass-nav {
+            background: rgba(245, 239, 230, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(111, 78, 55, 0.1);
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .menu-dot-leader {
+            flex-grow: 1;
+            border-bottom: 1px dotted #6F4E37;
+            margin: 0 10px;
+            position: relative;
+            top: -5px;
+            opacity: 0.4;
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-cream text-gray-800 antialiased font-sans">
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 glass-nav py-3">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex flex-col group">
+                <span class="font-serif text-2xl font-bold text-deepGreen tracking-tight group-hover:text-warmBrown transition-colors">Grand Cafe UK</span>
+                <span class="text-[10px] uppercase tracking-widest text-warmBrown font-medium">Est. 2009 | London N13</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-deepGreen hover:text-warmBrown font-medium transition-colors text-sm uppercase tracking-wide">Home</a>
+                <a href="#menu" class="text-deepGreen hover:text-warmBrown font-medium transition-colors text-sm uppercase tracking-wide">Our Menu</a>
+                <a href="#about" class="text-deepGreen hover:text-warmBrown font-medium transition-colors text-sm uppercase tracking-wide">About</a>
+                <a href="#reviews" class="text-deepGreen hover:text-warmBrown font-medium transition-colors text-sm uppercase tracking-wide">Reviews</a>
+                <a href="#contact" class="px-5 py-2.5 bg-deepGreen text-cream rounded-full hover:bg-warmBrown transition-colors duration-300 font-medium shadow-md flex items-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    <span>Call Now</span>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-deepGreen focus:outline-none">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cream absolute w-full border-t border-warmBrown/10 shadow-xl">
+            <div class="flex flex-col px-4 py-4 space-y-4 text-center">
+                <a href="#home" class="text-deepGreen font-serif text-lg py-2 border-b border-warmBrown/10" onclick="toggleMenu()">Home</a>
+                <a href="#menu" class="text-deepGreen font-serif text-lg py-2 border-b border-warmBrown/10" onclick="toggleMenu()">Menu</a>
+                <a href="#about" class="text-deepGreen font-serif text-lg py-2 border-b border-warmBrown/10" onclick="toggleMenu()">Story</a>
+                <a href="#contact" class="text-deepGreen font-serif text-lg py-2" onclick="toggleMenu()">Contact</a>
+                <a href="tel:+442088887721" class="bg-deepGreen text-cream py-3 rounded-lg font-medium shadow-md mx-4">
+                    Call To Book
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen min-h-[600px] flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-fixed bg-no-repeat">
+        <div class="container mx-auto px-4 text-center relative z-10 pt-16">
+            <div class="inline-block bg-warmBrown/20 backdrop-blur-sm px-4 py-1 rounded-full border border-cream/30 mb-6 animate-fade-in-down">
+                <span class="text-cream text-xs md:text-sm font-semibold tracking-widest uppercase">Serving London Since 2009</span>
+            </div>
+            
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-cream mb-6 leading-tight text-shadow">
+                London’s Favourite<br />Local Café
+            </h1>
+            
+            <p class="text-cream/90 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Great English Breakfast. Exceptional Coffee. <br class="hidden md:block">A warm family atmosphere in the heart of Forest House Hotel.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#menu" class="w-full md:w-auto px-8 py-4 bg-cream text-deepGreen font-semibold rounded-lg hover:bg-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    View Our Menu
+                </a>
+                <a href="#contact" class="w-full md:w-auto px-8 py-4 bg-transparent border-2 border-cream text-cream font-semibold rounded-lg hover:bg-cream hover:text-deepGreen transition-all shadow-lg">
+                    Get Directions
+                </a>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="mt-12 flex flex-wrap justify-center gap-6 md:gap-12 opacity-90">
+                <div class="flex items-center gap-2 text-cream">
+                    <div class="bg-softGold/20 p-2 rounded-full"><i data-lucide="star" class="w-5 h-5 text-softGold fill-current"></i></div>
+                    <span class="font-medium">4.8 Rating (318+ Reviews)</span>
+                </div>
+                <div class="flex items-center gap-2 text-cream">
+                    <div class="bg-softGold/20 p-2 rounded-full"><i data-lucide="coffee" class="w-5 h-5 text-softGold"></i></div>
+                    <span class="font-medium">Premium Barista Coffee</span>
+                </div>
+                <div class="flex items-center gap-2 text-cream">
+                    <div class="bg-softGold/20 p-2 rounded-full"><i data-lucide="heart" class="w-5 h-5 text-softGold"></i></div>
+                    <span class="font-medium">Family Atmosphere</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why People Love Us -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-warmBrown uppercase tracking-widest text-sm font-semibold">The Grand Experience</span>
+                <h2 class="font-serif text-4xl font-bold text-deepGreen mt-3 mb-4">Why Locals Love Us</h2>
+                <div class="w-24 h-1 bg-softGold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 bg-cream rounded-2xl text-center hover:shadow-lg transition-shadow border border-warmBrown/5 group">
+                    <div class="w-16 h-16 mx-auto bg-deepGreen text-cream rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="utensils" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-deepGreen mb-3">Generous Portions</h3>
+                    <p class="text-gray-600 leading-relaxed">We believe in starting the day fully fueled. Our meals are hearty, fresh, and great value for money (£1–10).</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-8 bg-cream rounded-2xl text-center hover:shadow-lg transition-shadow border border-warmBrown/5 group">
+                    <div class="w-16 h-16 mx-auto bg-deepGreen text-cream rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-deepGreen mb-3">Family Service</h3>
+                    <p class="text-gray-600 leading-relaxed">"Staff are like family." We pride ourselves on knowing our regulars and welcoming new faces with a smile.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-8 bg-cream rounded-2xl text-center hover:shadow-lg transition-shadow border border-warmBrown/5 group">
+                    <div class="w-16 h-16 mx-auto bg-deepGreen text-cream rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="map-pin" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-deepGreen mb-3">Perfect Location</h3>
+                    <p class="text-gray-600 leading-relaxed">Located inside Forest House Hotel in N13. The perfect stop for travelers and locals alike.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dishes (Visual) -->
+    <section class="py-20 bg-cream">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="max-w-2xl">
+                    <h2 class="font-serif text-4xl font-bold text-deepGreen mb-4">Our Signature Dishes</h2>
+                    <p class="text-gray-600">Fresh ingredients, cooked to order. From classic English breakfasts to homemade Mediterranean specials.</p>
+                </div>
+                <a href="#menu" class="hidden md:flex items-center text-warmBrown font-semibold hover:text-deepGreen transition-colors mt-4 md:mt-0">
+                    View Full Menu <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dish 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1533089862017-5614ca955430?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Full English Breakfast" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-deepGreen font-bold text-sm shadow-sm">Popular</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold text-deepGreen mb-2">Full English Breakfast</h3>
+                        <p class="text-gray-600 text-sm mb-4">The classic. Eggs, bacon, sausages, beans, tomato, mushrooms, and toast. Generous and satisfying.</p>
+                        <span class="text-warmBrown font-semibold">£9.50</span>
+                    </div>
+                </div>
+
+                <!-- Dish 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1574868291534-18401d71460b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Homemade Lasagne" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold text-deepGreen mb-2">Homemade Lasagne</h3>
+                        <p class="text-gray-600 text-sm mb-4">Rich meat sauce layered with pasta and creamy béchamel. Served with chunky chips and fresh salad.</p>
+                        <span class="text-warmBrown font-semibold">£10.00</span>
+                    </div>
+                </div>
+
+                <!-- Dish 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1507133750069-775b0f1eb607?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Barista Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold text-deepGreen mb-2">Artisan Coffee & Cake</h3>
+                        <p class="text-gray-600 text-sm mb-4">Expertly brewed cappuccino or latte paired with our selection of fresh homemade cakes.</p>
+                        <span class="text-warmBrown font-semibold">From £3.50</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                <a href="#menu" class="inline-flex items-center text-warmBrown font-semibold hover:text-deepGreen transition-colors">
+                    View Full Menu <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section (Structured List) -->
+    <section id="menu" class="py-20 bg-white relative">
+        <!-- Background decorative element -->
+        <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-cream to-white"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-deepGreen mb-4">The Menu</h2>
+                <p class="text-gray-500 italic font-serif">Premium quality. Affordable prices (£1–10).</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 max-w-5xl mx-auto">
+                
+                <!-- Breakfast & Brunch -->
+                <div class="observe-fade">
+                    <h3 class="font-serif text-2xl font-bold text-warmBrown mb-6 border-b border-gray-200 pb-2 flex items-center">
+                        <i data-lucide="sunrise" class="w-6 h-6 mr-2"></i> Breakfast & Brunch
+                    </h3>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Grand Full English</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£9.50</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">Bacon, sausage, egg, beans, mushrooms, tomato & toast.</p>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Scrambled Eggs & Beans</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£6.50</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">Served on thick-cut buttery toast.</p>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Bacon or Sausage Sandwich</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£4.50</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">Freshly baked bread with generous filling.</p>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Halloumi Omelette</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£8.50</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">Three eggs, grilled halloumi, served with fresh salad.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Lunch & Specials -->
+                <div class="observe-fade">
+                    <h3 class="font-serif text-2xl font-bold text-warmBrown mb-6 border-b border-gray-200 pb-2 flex items-center">
+                        <i data-lucide="utensils-crossed" class="w-6 h-6 mr-2"></i> Lunch & Specials
+                    </h3>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Homemade Lasagne</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£10.00</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">The customer favourite. With chips and salad.</p>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Chicken Escalope</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£9.80</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">Breaded chicken breast served with fries.</p>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Jacket Potato (Various Fillings)</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£7.50</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">Cheese, Beans, Tuna Mayo, or Coleslaw.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Coffee & Drinks -->
+                <div class="observe-fade">
+                    <h3 class="font-serif text-2xl font-bold text-warmBrown mb-6 border-b border-gray-200 pb-2 flex items-center">
+                        <i data-lucide="coffee" class="w-6 h-6 mr-2"></i> Coffee & Desserts
+                    </h3>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Cappuccino / Latte</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£3.20</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>English Tea / Herbal Tea</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>£2.50</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-baseline font-serif text-lg text-deepGreen font-semibold">
+                                <span>Homemade Cakes</span>
+                                <span class="menu-dot-leader"></span>
+                                <span>From £3.50</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">Ask for today's selection.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CTA Box -->
+                <div class="bg-deepGreen rounded-xl p-8 text-center flex flex-col justify-center items-center text-cream shadow-lg observe-fade">
+                    <h4 class="font-serif text-2xl font-bold mb-2">Hungry?</h4>
+                    <p class="mb-6 opacity-90">Call us to book a table or order takeaway.</p>
+                    <a href="tel:+442088887721" class="px-8 py-3 bg-cream text-deepGreen font-bold rounded-full hover:bg-white transition-colors flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +44 20 8888 7721
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-cream">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-softGold/20 rounded-tl-3xl z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Cafe Interior" class="relative z-10 rounded-2xl shadow-xl w-full object-cover h-[500px]">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg z-20 max-w-xs hidden md:block">
+                        <p class="font-serif text-deepGreen text-lg italic">"A hidden gem in N13. The atmosphere is unmatched."</p>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <span class="text-warmBrown uppercase tracking-widest text-sm font-semibold">Our Story</span>
+                    <h2 class="font-serif text-4xl font-bold text-deepGreen mt-2 mb-6">More Than Just a Café</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        For nearly 15 years, Grand Cafe UK has been the beating heart of the Forest House Hotel. We aren't just a place to grab coffee; we are a place where locals meet, families gather, and travelers find a home away from home.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        We pride ourselves on consistency. Whether it's the rich aroma of our coffee, the generous portions of our Full English, or the warm greeting you receive at the door, our goal is simple: to treat every customer like family.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="border-l-4 border-softGold pl-4">
+                            <span class="block text-2xl font-bold text-deepGreen">15+</span>
+                            <span class="text-sm text-gray-600">Years of Service</span>
+                        </div>
+                        <div class="border-l-4 border-softGold pl-4">
+                            <span class="block text-2xl font-bold text-deepGreen">300+</span>
+                            <span class="text-sm text-gray-600">5-Star Reviews</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-block border-b-2 border-deepGreen text-deepGreen font-bold pb-1 hover:text-warmBrown hover:border-warmBrown transition-colors">
+                        Visit Us Today
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-deepGreen relative overflow-hidden">
+        <!-- Decorative bg circles -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl font-bold text-cream mb-4">What Our Customers Say</h2>
+                <div class="flex justify-center gap-1">
+                    <i data-lucide="star" class="w-6 h-6 text-softGold fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 text-softGold fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 text-softGold fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 text-softGold fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 text-softGold fill-current"></i>
+                </div>
+                <p class="text-cream/80 mt-2">Rated 4.8 Stars on Google</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/10 text-cream">
+                    <i data-lucide="quote" class="w-8 h-8 text-softGold mb-4 opacity-50"></i>
+                    <p class="italic mb-6 leading-relaxed">"Staff are like family and food is fantastic with good portions. Best English full breakfast in town without a doubt."</p>
+                    <div class="font-bold font-serif">— Sarah J.</div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/10 text-cream transform md:-translate-y-4 shadow-xl">
+                    <i data-lucide="quote" class="w-8 h-8 text-softGold mb-4 opacity-50"></i>
+                    <p class="italic mb-6 leading-relaxed">"Fantastic little café – extremely attentive service. I stay at the Forest House Hotel often just for this breakfast!"</p>
+                    <div class="font-bold font-serif">— Michael R.</div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/10 text-cream">
+                    <i data-lucide="quote" class="w-8 h-8 text-softGold mb-4 opacity-50"></i>
+                    <p class="italic mb-6 leading-relaxed">"Great value for money. The lasagna is homemade and tastes incredible. Highly recommend the coffee too."</p>
+                    <div class="font-bold font-serif">— David T.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section id="contact" class="py-0 bg-cream">
+        <div class="flex flex-col md:flex-row h-full">
+            <!-- Info Side -->
+            <div class="md:w-1/2 p-12 lg:p-20 flex flex-col justify-center bg-white">
+                <span class="text-warmBrown uppercase tracking-widest text-sm font-semibold mb-2">Visit Us</span>
+                <h2 class="font-serif text-4xl font-bold text-deepGreen mb-8">Contact & Location</h2>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-cream p-3 rounded-full text-deepGreen shrink-0">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-deepGreen text-lg">Address</h4>
+                            <p class="text-gray-600">Grand Cafe UK<br>Inside Forest House Hotel<br>London N13 6BE</p>
+                            <a href="https://maps.google.com" target="_blank" class="text-warmBrown text-sm font-semibold mt-1 inline-block hover:underline">Get Directions</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="bg-cream p-3 rounded-full text-deepGreen shrink-0">
+                            <i data-lucide="phone" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-deepGreen text-lg">Phone</h4>
+                            <p class="text-gray-600 mb-1">Book a table or order takeaway</p>
+                            <a href="tel:+442088887721" class="text-xl font-bold text-deepGreen hover:text-warmBrown transition-colors">+44 20 8888 7721</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="bg-cream p-3 rounded-full text-deepGreen shrink-0">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-deepGreen text-lg">Opening Hours</h4>
+                            <p class="text-gray-600">Monday - Sunday</p>
+                            <p class="font-semibold text-deepGreen">7:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Side -->
+            <div class="md:w-1/2 h-[400px] md:h-auto bg-gray-200">
+                <!-- Using an iframe placeholder that points roughly to N13 for demo purposes -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.7289561284755!2d-0.1150!3d51.6150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876193655555555%3A0x123456789abcdef!2sLondon%20N13%206BE!5e0!3m2!1sen!2suk!4v1625000000000!5m2!1sen!2suk" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    class="filter grayscale hover:grayscale-0 transition-all duration-500">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-deepGreen text-cream py-12 border-t border-white/10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <h3 class="font-serif text-2xl font-bold mb-1">Grand Cafe UK</h3>
+                    <p class="text-sm opacity-60">Located at Forest House Hotel</p>
+                </div>
+                
+                <div class="flex gap-6 mb-6 md:mb-0">
+                    <a href="#" class="hover:text-softGold transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-softGold transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-softGold transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+
+                <div class="text-center md:text-right">
+                    <p class="text-sm opacity-60">&copy; 2024 Grand Cafe UK. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#mobile-menu-btn i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMenu);
+
+        // Sticky Navbar Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('py-3', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('py-2', 'py-3');
+            }
+        });
+
+        // Simple Intersection Observer for Fade In animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.add('fade-in-up'); // Ensure class is applied
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.observe-fade').forEach((element) => {
+            element.classList.add('fade-in-up');
+            observer.observe(element);
+        });
+
+    </script>
+</body>
+</html>
